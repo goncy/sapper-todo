@@ -1,5 +1,5 @@
 <script>
-  import { todos } from "../store/todos";
+  import { all, pending, completed, todos } from "../store/todos";
   import Todo from "../components/Todo.svelte"
 </script>
 
@@ -10,15 +10,40 @@
 <div>
   <h1>Some things to do</h1>
 
-  {#if $todos.length}
-  <ul>
-    {#each $todos as todo}
-      <Todo>{todo}</Todo>
-    {/each}
-  </ul>
-  {:else}
-    <small>You have nothing to do</small>
-  {/if}
+  {#await todos.fetch()}
+    <p>Fetching todos...</p>
+    {:then}
+      {#if $todos.length}
+        {#if $all.length}
+          <h3>All</h3>
+          <ul>
+            {#each $all as todo}
+              <Todo>{todo.text}</Todo>
+            {/each}
+          </ul>
+        {/if}
+        {#if $pending.length}
+          <h3>Pending</h3>
+          <ul>
+            {#each $pending as todo}
+              <Todo>{todo.text}</Todo>
+            {/each}
+          </ul>
+        {/if}
+        {#if $completed.length}
+          <h3>Completed</h3>
+          <ul>
+            {#each $completed as todo}
+              <Todo>{todo.text}</Todo>
+            {/each}
+          </ul>
+        {/if}
+      {:else}
+        <small>You have nothing to do</small>
+      {/if}
+    {:catch}
+      <p>Something failed</p>
+  {/await}
 </div>
 
 <style>

@@ -4,7 +4,7 @@ const deffer = (value, time = 1000) => new Promise((resolve) => setTimeout(() =>
 
 const todos = {
 	get list() {
-		return JSON.parse(localStorage.getItem('todos') || '[]')
+		return typeof window === "undefined" ? [] : JSON.parse(localStorage.getItem('todos') || '[]')
 	},
 	add(todo) {
 		localStorage.setItem("todos", JSON.stringify(todos.list.concat(todo)))

@@ -1,5 +1,7 @@
 <script>
-  import { all, pending, completed, todos } from "../store/todos";
+  import {all, pending, completed} from "../store/todos/state";
+  import {fetch} from "../store/todos/actions";
+
   import Todo from "../components/Todo.svelte"
 </script>
 
@@ -10,10 +12,10 @@
 <div>
   <h1>Some things to do</h1>
 
-  {#await todos.fetch()}
+  {#await fetch()}
     <p>Fetching todos...</p>
     {:then}
-      {#if $todos.length}
+      {#if $all.length}
         {#if $all.length}
           <h3>All</h3>
           <ul>

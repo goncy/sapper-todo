@@ -1,12 +1,12 @@
 <script>
 	import { goto } from '@sapper/app'
 
-	import {todos} from "../store/todos"
+	import {add} from "../store/todos/actions"
 
 	let value = '';
 
 	function handleSubmit() {
-		todos.add(value);
+		add(value);
 
 		value = '';
 

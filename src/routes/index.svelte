@@ -16,14 +16,12 @@
     <p>Fetching todos...</p>
     {:then}
       {#if $all.length}
-        {#if $all.length}
-          <h3>All</h3>
-          <ul>
-            {#each $all as todo}
-              <Todo>{todo.text}</Todo>
-            {/each}
-          </ul>
-        {/if}
+        <h3>All</h3>
+        <ul>
+          {#each $all as todo}
+            <Todo>{todo.text}</Todo>
+          {/each}
+        </ul>
         {#if $pending.length}
           <h3>Pending</h3>
           <ul>

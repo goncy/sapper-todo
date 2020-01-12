@@ -3,12 +3,12 @@
 
 	import {add} from "../store/todos/actions"
 
-	let value = '';
+	let text = '';
 
 	function handleSubmit() {
-		add(value);
+		add({text, status: 'pending'});
 
-		value = '';
+		text = '';
 
 		goto('/');
 	}
@@ -21,5 +21,5 @@
 <h1>Add a todo</h1>
 
 <form on:submit|preventDefault={handleSubmit}>
-	<input bind:value>
+	<input bind:value={text}>
 </form>

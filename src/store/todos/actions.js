@@ -2,15 +2,11 @@ import todos from "./store"
 import api from "./resources"
 
 export function add(todo) {
-	return todos.update(s => s.concat(todo))
+	return api.add(todo).then(() => todos.update(_todos => _todos.concat(todo)))
 }
 
 export function remove(todo) {
-	return todos.update(s => s.filter(t => t !== todo))
-}
-
-export function reset() {
-	return todos.set([])
+	return api.remove(todo).then(() => todos.update(_todos => _todos.filter(_todo => _todo !== todo)))
 }
 
 export function fetch() {

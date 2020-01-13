@@ -50,7 +50,7 @@
 
 <nav>
 	<ul>
-		<li><a class:selected='{segment === undefined}' href='.'>home</a></li>
+		<li><a class:selected='{segment === undefined}' href=".">home</a></li>
 		<li><a class:selected='{segment === "add"}' href='add'>add</a></li>
 	</ul>
 </nav>

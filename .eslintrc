@@ -21,6 +21,8 @@
   },
   "plugins": ["import", "svelte3"],
   "rules": {
+    "semi": "error",
+    "quotes": "error",
     "no-console": "warn",
     "no-unused-vars": [
       "warn",

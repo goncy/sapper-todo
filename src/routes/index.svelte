@@ -1,8 +1,7 @@
 <script>
   import {all, pending, completed} from "../store/todos/state";
   import {fetch, complete} from "../store/todos/actions";
-
-  import Todo from "../components/Todo.svelte"
+  import Todo from "../components/Todo.svelte";
 </script>
 
 <svelte:head>

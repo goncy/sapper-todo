@@ -1,16 +1,16 @@
 <script>
-	import { goto } from '@sapper/app'
+	import { goto } from "@sapper/app";
 
-	import {add} from "../store/todos/actions"
+	import {add} from "../store/todos/actions";
 
-	let text = '';
+	let text = "";
 
 	function handleSubmit() {
-		add({text, id: String(+new Date()), status: 'pending'});
+		add({text, id: String(+new Date()), status: "pending"});
 
-		text = '';
+		text = "";
 
-		goto('/');
+		goto("/");
 	}
 </script>
 

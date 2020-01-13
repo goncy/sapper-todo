@@ -9,13 +9,13 @@ const todos = {
 	add(todo) {
 		localStorage.setItem("todos", JSON.stringify(todos.list.concat(todo)))
 	},
-	remove(todo) {
-		localStorage.setItem("todos", JSON.stringify(todos.list.filter(_todo => _todo === todo)))
+	complete(id) {
+		localStorage.setItem("todos", JSON.stringify(todos.list.map(_todo => _todo.id === id ? {..._todo, status: 'completed'} : _todo)))
 	}
 }
 
 export default {
 	fetch: () => deffer(todos.list),
 	add: (todo) => deffer(todos.add(todo)),
-	remove: (todo) => deffer(todos.remove(todo)),
+	complete: (todo) => deffer(todos.complete(todo)),
 }

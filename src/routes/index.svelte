@@ -1,6 +1,6 @@
 <script>
   import {all, pending, completed} from "../store/todos/state";
-  import {fetch} from "../store/todos/actions";
+  import {fetch, complete} from "../store/todos/actions";
 
   import Todo from "../components/Todo.svelte"
 </script>
@@ -16,27 +16,25 @@
     <p>Fetching todos...</p>
     {:then}
       {#if $all.length}
-        <h3>All</h3>
-        <ul>
-          {#each $all as todo}
-            <Todo>{todo.text}</Todo>
-          {/each}
-        </ul>
+        <h3>Pending</h3>
         {#if $pending.length}
-          <h3>Pending</h3>
           <ul>
-            {#each $pending as todo}
-              <Todo>{todo.text}</Todo>
+            {#each $pending as {id, status, text}}
+              <Todo onComplete={() => complete(id)}>{text}</Todo>
             {/each}
           </ul>
+          {:else}
+            <div style="margin-bottom: 1rem; margin-left: 1rem;">Nothing pending</div>
         {/if}
+        <h3>Completed</h3>
         {#if $completed.length}
-          <h3>Completed</h3>
           <ul>
             {#each $completed as todo}
               <Todo>{todo.text}</Todo>
             {/each}
           </ul>
+          {:else}
+            <div>Nothing completed</div>
         {/if}
       {:else}
         <small>You have nothing to do</small>

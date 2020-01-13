@@ -6,7 +6,7 @@
 	let text = '';
 
 	function handleSubmit() {
-		add({text, status: 'pending'});
+		add({text, id: String(+new Date()), status: 'pending'});
 
 		text = '';
 

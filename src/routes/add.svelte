@@ -23,3 +23,12 @@
 <form on:submit|preventDefault={handleSubmit}>
 	<input bind:value={text}>
 </form>
+
+<style>
+  h1 {
+    font-size: 2.8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+  }
+  </style>
